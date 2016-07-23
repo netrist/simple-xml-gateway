@@ -1,0 +1,29 @@
+{
+  "port": 3000,
+  "routes": [{
+    "path": "GenericNAICS.asmx",
+    "default": {
+      "validate": {
+        "envelope": true,
+        "schema": true,
+        "schemaPath": "schemas/GenericNAICS/GenericNAICS.xsd"
+      },
+      "pipelines": [],
+      "pipe": {
+        "url": "http://www.webservicex.net/GenericNAICS.asmx"
+      }
+    },
+    "soapActions": [{
+      "action": "\"http://www.webservicex.net/GetNAICSByID\"",
+      "validate": {
+        "envelope": true,
+        "schema": true,
+        "schemaPath": "schemas/GenericNAICS/GenericNAICS.xsd"
+      },
+      "pipelines": [],
+      "pipe": {
+        "url": "http://www.webservicex.net/GenericNAICS.asmx"
+      }
+    }]
+  }]
+}

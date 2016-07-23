@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" 
+	xmlns:tns="http://www.webservicex.net/"
+	targetNamespace="http://www.webservicex.net/"
+	elementFormDefault="qualified"
+	vc:minVersion="1.0" vc:maxVersion="1.1">
+	
+	<xs:include schemaLocation="schemas/GenericNAICS/NAICS.xsd"/>
+
+	<xs:element name="GetNAICSByID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" name="NAICSCode" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetNAICSByIDResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" name="GetNAICSByIDResult" type="xs:boolean" />
+				<xs:element minOccurs="1" maxOccurs="1" name="NAICSData" type="tns:NAICSList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="NAICSList">
+		<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="1" name="Records" type="xs:int" />
+			<xs:element minOccurs="0" maxOccurs="1" name="NAICSData" type="tns:ArrayOfNAICS" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfNAICS">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="NAICS" type="tns:NAICS" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GetNAICSByIndustry">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" name="IndustryName" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetNAICSByIndustryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" name="GetNAICSByIndustryResult" type="xs:boolean" />
+				<xs:element minOccurs="1" maxOccurs="1" name="NAICSData" type="tns:NAICSList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetNAICSGroupByID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" name="NAICSCode" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetNAICSGroupByIDResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" name="GetNAICSGroupByIDResult" type="xs:boolean" />
+				<xs:element minOccurs="1" maxOccurs="1" name="NAICSData" type="tns:NAICSList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+</xs:schema>

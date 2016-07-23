@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" 
+	xmlns:tns="http://www.webservicex.net/"
+	targetNamespace="http://www.webservicex.net/"
+	elementFormDefault="qualified"
+	vc:minVersion="1.0" vc:maxVersion="1.1">
+	
+	<xs:complexType name="NAICS">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="NAICSCode" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Country" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="IndustryDescription" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
