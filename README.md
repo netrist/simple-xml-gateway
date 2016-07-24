@@ -2,19 +2,37 @@
 A simple gateway for routing soap and xml data. Simple XML gateway accepts requests and forwards them to an external endpoint. It returns the response it receives back to its client. You can check the incoming request is schema compliant, transform it using XSL,
 read data from it and add headers to the request, or extend its processing logic with custom middleware functions. The gateway currently processes SOAP 1.1 requests as this is its initial use.
 
-## Getting Started
-After cloning the repository, be sure to run "npm install". Simple XML gateway uses modules that require the libxml and libxslt system libraries installed
-your server. This software should run on most linux and mac operating systems but has not been tested on Windows.
+## Installing
+Simple XML gateway uses modules that require the libxml and libxslt system libraries installed your server. This software should run on most linux and mac operating systems but has not been tested on Windows. Be sure your system has the following libraries installed:
 
-From the installation folder, start the application with "node lib/main.js".
+* node 4.4.7 (may work on earlier versions)
+* libxml2
+* libxslt
+* Python 2.7
+* gcc
+* node-gyp (npm module installed globally)
+
+On an rpm-enabled system, you can install the above with: 
+
+	yum install nodejs libxml2 libxslt gcc python27
+	npm install -g node-gyp
+
+Then check your versions:   
+   
+    node --version
+    xsltproc --version
+    python --version
+
+Finally, clone this repository, navigate to the directory and run "npm install" as a privileged user. 
+
+Start the application with "node lib/main.js".
 
 ## Configuring
 The config folder contains a defalt.json file with a sample configuration for the Generic NAICS service. The first configuration tells the server which port to use (defaults to 3000). The remaining configurations are by route or combination of route and SOAP action. A route can be configured to:
 
 1. Validate the request against a schema
-2. Transform the request using an XSLT
-3. Apply one or more "pipelines" (Transforms, Put data into headers, or apply any number of custom pipelines)
-4. Define where the request is to be sent
+2. Apply one or more "pipelines" (Transforms, Put data into headers, or apply any number of custom pipelines)
+3. Define where the request is to be sent
 
 If a route is defined by an endpoint and SOAP action, each of the four configurations above must be defined for the SOAP action.
 
@@ -61,6 +79,7 @@ The configuration below is an example configuration of a route by soapActions. N
 	        "schema": true,
 	        "schemaPath": "schemas/GenericNAICS/GenericNAICS.xsd"
 	      },
+	      "pipelines": [],
 	      "pipe": {
 	        "url": "http://www.webservicex.net/GenericNAICS.asmx"
 	      }
@@ -109,6 +128,8 @@ directive.
 ## Future Features
 
 * Validate responses
+* Improved error handling when the incoming URI is not recognized or no route is found
+* Allow schema includes to be relative to the primary XSD instead of the location that the node command was run
 * Ability to process RESTful XML traffic
 * Manage route configurations via REST interface
 * Manage configuratons through a GUI
