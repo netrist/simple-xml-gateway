@@ -8,7 +8,7 @@
     "config": "^1.21.0",
     "express": "^4.14.0",
     "libxml-xsd": "^0.5.2",
-    "libxmljs": "^0.18.0",
+    "libxmljs": "^1.0.0",
     "libxslt": "0.6.3",
     "request": "^2.72.0",
     "underscore": "^1.8.3",
